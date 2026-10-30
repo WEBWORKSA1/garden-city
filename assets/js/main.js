@@ -69,7 +69,7 @@
 
   /* Count-up stats */
   d.querySelectorAll('[data-count]').forEach(function(el){
-    var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',t0=null;
+    var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',t0=null;if(!end)return;
     function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1400,1);el.textContent=Math.round(end*p).toLocaleString()+suf;if(p<1)requestAnimationFrame(step);}
     var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){requestAnimationFrame(step);o.disconnect();}});o.observe(el);
   });
