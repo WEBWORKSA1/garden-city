@@ -135,7 +135,7 @@
  var names=['Project','Space','Budget & timing','Contact'];
  var prev=document.getElementById('prev'),next=document.getElementById('next'),sub=document.getElementById('submit');
  var R={balcony:[300,2500],rooftop:[5000,40000],vertical:[1500,15000],backyard:[4000,30000],edible:[800,6000],irrigation:[1000,5000],maintenance:[80,300],commercial:[10000,80000]};
- function money(v){return '$'+Math.round(v/50)*50>=0?'$'+(Math.round(v/50)*50).toLocaleString():'';}
+ function money(v){return '$'+(Math.round(v/50)*50).toLocaleString();}
  function est(){var p=f.querySelector('[name=project]:checked'),s=f.querySelector('[name=size]:checked');var out=document.getElementById('est-val');if(!p||!s){out.textContent='Select a project and size';return;}var r=R[p.dataset.k],k=+s.dataset.f;var t=money(r[0]*k)+' – '+money(r[1]*k)+(p.dataset.k==='maintenance'?' per visit':'');out.textContent=t;document.getElementById('est-hidden').value=t;}
  function show(i){steps.forEach(function(s){s.classList.toggle('active',+s.dataset.step===i);});cur=i;document.getElementById('bar').style.width=(i/n*100)+'%';document.getElementById('step-label').textContent='Step '+i+' of '+n+' — '+names[i-1];prev.style.visibility=i>1?'visible':'hidden';next.style.display=i<n?'':'none';sub.style.display=i===n?'':'none';est();var t=f.getBoundingClientRect().top+scrollY-110;if(scrollY>t)scrollTo({top:t,behavior:'smooth'});}
  function valid(){var ok=true;steps[cur-1].querySelectorAll('input,select,textarea').forEach(function(el){if(ok&&!el.checkValidity()){el.reportValidity();ok=false;}});return ok;}
