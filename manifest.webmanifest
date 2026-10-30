@@ -1,0 +1,9 @@
+{
+  "name": "Garden.City",
+  "short_name": "Garden.City",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f3ea",
+  "theme_color": "#0f3d2e",
+  "icons": [{"src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml"}]
+}
